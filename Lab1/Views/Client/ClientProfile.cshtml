@@ -23,7 +23,6 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Bill Name</th>
             <th scope="col">Bill Id</th>
             <th scope="col">Bank Name</th>
@@ -35,34 +34,42 @@
         @foreach (var item in @Model.Bills)
         {
             <tr>
-                <th scope="row">1</th>
                 <td>@item.Name</td>
                 <td>@item.Id</td>
                 <td>@item.Bank.Name</td>
                 <td>@item.Money</td>
                 <td>@item.State</td>
-                <td>
-                    <form asp-action="WithdrawMoney" asp-controller="Client" asp-route-billId="@item.Id" asp-route-bankId="@item.BankId" asp-anti-forgery="true" method="post">
-                        <div class="form-group">
-                            <input type="number" asp-for="@Model.WMoney"/>
-                            <input type="submit" value="Withdraw" class="btn"/>
-                        </div>
-                    </form>
-                    <form asp-action="PaymentRequest" asp-controller="Client" asp-route-billId="@item.Id" asp-route-bankId="@item.BankId" asp-anti-forgery="true" method="post">
-                        <div class="form-group">
-                            <input type="submit" value="GET MONEY" class="btn"/>
-                        </div>
-                    </form>
-                    <form asp-action="FreezeBill" asp-controller="Client" asp-route-billId="@item.Id" asp-anti-forgery="true" method="post">
-                        <div class="form-group">
-                            <input type="submit" value="Freeze" class="btn"/>
-                        </div>
-                    </form>
-                    <form asp-action="BlockBill" asp-controller="Client" asp-route-billId="@item.Id" asp-anti-forgery="true" method="post">
-                        <div class="form-group">
-                            <input type="submit" value="Block" class="btn"/>
-                        </div>
-                    </form>
+            <td>
+                <form asp-action="WithdrawMoney" asp-controller="Client" asp-route-billId="@item.Id" asp-route-bankId="@item.BankId" asp-anti-forgery="true" method="post">
+                    <div class="form-group">
+                        <input type="number" asp-for="@Model.WMoney"/>
+                        <input type="submit" value="Withdraw" class="btn"/>
+                    </div>
+                </form>
+            </td>
+            <td>
+                    
+                <form asp-action="PaymentRequest" asp-controller="Client" asp-route-billId="@item.Id" asp-route-bankId="@item.BankId" asp-anti-forgery="true" method="post">
+                    <div class="form-group">
+                        <input type="submit" value="money request" class="btn"/>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form asp-action="FreezeBill" asp-controller="Client" asp-route-billId="@item.Id" asp-anti-forgery="true" method="post">
+                    <div class="form-group">
+                        <input type="submit" value="Freeze" class="btn"/>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form asp-action="BlockBill" asp-controller="Client" asp-route-billId="@item.Id" asp-anti-forgery="true" method="post">
+                    <div class="form-group">
+                        <input type="submit" value="Block" class="btn"/>
+                    </div>
+                </form>
+            </td>
+            <td>
                     <form asp-action="MakeActiveBill" asp-controller="Client" asp-route-billId="@item.Id" asp-anti-forgery="true" method="post">
                         <div class="form-group">
                             <input type="submit" value="Make active " class="btn"/>
@@ -111,7 +118,6 @@
     <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Bill Id</th>
                 <th scope="col">Bank Name</th>
                 <th scope="col">Money</th>
@@ -124,7 +130,6 @@
             @foreach (var item in @Model.CreditDisplayModels)
             {
                 <tr>
-                    <th scope="row">1</th>
                     <td>@item.BillId</td>
                     <td>@item.BankName</td>
                     <td>@item.Money</td>
